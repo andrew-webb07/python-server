@@ -2,37 +2,42 @@ ANIMALS = [
 {
       "id": 1,
       "name": "Doodles",
-      "breed": "Poodle",
+      "species": "Poodle",
       "customerId": 1,
-      "locationId": 2
+      "locationId": 2,
+      "status": "Admitted"
     },
     {
       "id": 2,
       "name": "Chip",
-      "breed": "dog",
+      "species": "dog",
       "locationId": 3,
-      "customerId": 4
+      "customerId": 4,
+      "status": "Admitted"
     },
     {
       "id": 3,
       "name": "Paws",
-      "breed": "Kitty",
+      "species": "Cat",
       "locationId": 1,
-      "customerId": 3
+      "customerId": 3,
+      "status": "Admitted"
     },
     {
       "name": "Jasmine",
-      "breed": "dog",
+      "species": "dog",
       "locationId": 1,
       "customerId": 3,
-      "id": 4
+      "id": 4,
+      "status": "Admitted"
     },
     {
       "name": "Ruby",
-      "breed": "dog",
+      "species": "dog",
       "locationId": 3,
       "customerId": 1,
-      "id": 6
+      "id": 6,
+      "status": "Admitted"
     }
 ]
 
@@ -84,3 +89,12 @@ def delete_animal(id):
     # If the animal was found, use pop(int) to remove it from list
     if animal_index >= 0:
         ANIMALS.pop(animal_index)
+
+def update_animal(id, new_animal):
+    # Iterate the ANIMALS list, but use enumerate() so that
+    # you can access the index value of each item.
+    for index, animal in enumerate(ANIMALS):
+        if animal["id"] == id:
+            # Found the animal. Update the value.
+            ANIMALS[index] = new_animal
+            break

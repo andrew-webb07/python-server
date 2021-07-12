@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/Users/andrew/.local/share/virtualenvs/python-server-AuaFGA87/bin/python",
+    "python.formatting.autopep8Path": "${env:VIRTUAL_ENV}/bin/autopep8",
+    "python.linting.pylintEnabled": true,
+}

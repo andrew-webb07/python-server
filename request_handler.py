@@ -4,6 +4,7 @@ from locations import get_all_locations, get_single_location, create_location, d
 from customers import get_all_customers, get_single_customer, create_customer, delete_customer, update_customer
 from employees import get_single_employee, get_all_employees, create_employee, delete_employee, update_employee
 import json
+from models import Animal, Customer, Employee, Location
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -11,7 +12,7 @@ import json
 # common purpose is to respond to HTTP requests from a client.
 class HandleRequests(BaseHTTPRequestHandler):
     def parse_url(self, path):
-        ''' parse url
+        ''' parse url to return the resource and id
         '''
         # Just like splitting a string in JavaScript. If the
         # path is "/animals/1", the resulting list will
@@ -101,7 +102,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         post_body = json.loads(post_body)
 
         # Parse the URL
-        (resource, id) = self.parse_url(self.path)
+        (resource, _) = self.parse_url(self.path)
 
         # Initialize new animal
         new_animal = None
@@ -133,6 +134,8 @@ class HandleRequests(BaseHTTPRequestHandler):
     # Here's a method on the class that overrides the parent's method.
     # It handles any PUT request.
     def do_PUT(self):
+        """Handles our update option
+        """
         self._set_headers(204)
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
@@ -156,7 +159,10 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 
     def do_DELETE(self):
+        """ handles our DELETE method
+        """
         # Set a 204 response code
+        #204 says everything was sent ok but nothing to show
         self._set_headers(204)
 
         # Parse the URL
@@ -173,8 +179,6 @@ class HandleRequests(BaseHTTPRequestHandler):
             delete_customer(id)
 
         self.wfile.write("".encode())
-
-
 
 # This function is not inside the class. It is the starting
 # point of this application.

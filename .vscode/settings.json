@@ -2,4 +2,13 @@
     "python.pythonPath": "/Users/andrew/.local/share/virtualenvs/python-server-AuaFGA87/bin/python",
     "python.formatting.autopep8Path": "${env:VIRTUAL_ENV}/bin/autopep8",
     "python.linting.pylintEnabled": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Python Kennels",
+            "database": "kennel.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true,
 }
